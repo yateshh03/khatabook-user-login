@@ -54,12 +54,12 @@ module.exports.viewHisaabController = async (req, res) => {
         }
 
         if(hisaab.encrypted){
-            return res.render("passcode", {isloggedIn: true, id})
+            return res.render("passcode", { page: "profile", isloggedIn: true, id})
         }
 
 
 
-        res.render("hisaab", { isloggedIn: true, hisaab, page: "profile" });
+        res.render("hisaab", { page: "profile", isloggedIn: true, hisaab });
     } catch (error) {
         console.error("Error fetching Hisaab:", error);
         return res.status(500).send("Server error");

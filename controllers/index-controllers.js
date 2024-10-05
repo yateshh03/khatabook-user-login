@@ -84,10 +84,19 @@ module.exports.profileController = async (req, res, next) => {
     // const id = req.user.id; 
 
 
+    const startDate = req.query.startDate;
+    const endDate = req.query.endDate;
+    const order = req.query.byDate ? Number(req.query.byDate) : -1;
+
+
     let details = await userModel.findOne({ _id: req.user.id });
     console.log(details);
 
-    let hisaabs = await hisaabModel.find({ user: details._id });
+    let hisaabs = await hisaabModel.find({ user: details._id, createdAt: {
+        $gte: startDate? new Date(startDate) : new Date(0),
+        $lte: endDate? new Date(endDate) : new Date(),
+    }
+ }).sort({ createdAt : order }).exec();
 
     console.log({ user: details._id })
     console.log(hisaabs)
