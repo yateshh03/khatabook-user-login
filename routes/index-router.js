@@ -3,7 +3,7 @@ const router = express.Router()
 
 const { landingPageController, registerController,
     postRegisterController, postLoginController, logoutController, profileController
- } = require("../controllers/index-controllers");
+} = require("../controllers/index-controllers");
 const { isloggedIn, redirectIfLoggedIn } = require("../middlewares/auth-middleware");
 
 

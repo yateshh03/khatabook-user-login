@@ -14,17 +14,14 @@ const hisaabSchema = mongoose.Schema({
         required: true,
         
     },
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
+    user:{ type: mongoose.Schema.Types.ObjectId, ref: "user"},
     encrypted:{
         type: Boolean,
         required: true,
     },
     shareable:{
         type: Boolean,
-        required: true,
+        default: false
     },
     passcode:{
         type: String,
